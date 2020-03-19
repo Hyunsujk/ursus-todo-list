@@ -16,12 +16,26 @@
       <h1 class="appBar-title">Todo List App</h1>
     </header>
     <!-- ASSIGNMENT CONTENT GOES BELOW HERE -->
-    <lable>New Task: </lable>
-    <input type="text" placeholder="Enter New Task" /><button>Add Task</button>
-    <h3>My Todo List</h3>
-    <ul>
-      <li>There are no tasks</li>
-    </ul>
+    <div>
+      <label for="newTask">New Task: </label>
+      <input
+        class="js-newTask"
+        type="text"
+        placeholder="Enter New Task"
+        id="newTask"
+      />
+      <button class="js-btn-add">
+        Add Task
+      </button>
+    </div>
+    <div>
+      <h3>My Todo List</h3>
+      <ul class="js-container">
+        <li>
+          There are no tasks
+        </li>
+      </ul>
+    </div>
     <footer class="footer">
       &copy; Prime Digital Academy
     </footer>
