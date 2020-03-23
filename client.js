@@ -47,14 +47,15 @@ function render() {
 
   for (let i = 0; i < tasks.length; i++) {
     const item = tasks[i];
-    let completeBtn = `<button class="js-btn-complete" data-index='${i}'>Complete</button>`;
-
+    let completeBtn = `<button class="js-btn-complete btn" data-index='${i}'>Complete</button>`;
+    let backgroundClass = "notCompleted";
     if (item.completed === true) {
-      completeBtn = `<button disabled class="js-btn-complete" data-index='${i}'>Complete</button>`;
+      backgroundClass = "isComplete";
+      completeBtn = `<button disabled class="js-btn-complete btn" data-index='${i}'>Complete</button>`;
     }
 
     $(".js-container").append(`
-      <li>${item.name}${completeBtn}</li>
+      <li class ="${backgroundClass}">${item.name}${completeBtn}</li>
       `);
   }
 }
