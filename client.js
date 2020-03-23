@@ -1,4 +1,4 @@
-console.log("js");
+// console.log("js");
 $(document).ready(init);
 
 const tasks = [];
@@ -9,15 +9,27 @@ function init() {
 }
 
 function taskComplete(event) {
-  console.log("complete");
-  console.log("event:", event);
-  console.log("this", this);
-  $(this).toggleClass(".js-btn-complete", "true");
-  console.log(tasks);
+  // console.log("complete");
+  // console.log("event:", event);
+  // console.log("this", this);
+  // console.log(tasks);
+
+  const i = $(this).data("index");
+  // console.log(i);
+  // console.log(tasks[i].completed);
+  if (tasks[i].completed === true) {
+    tasks[i].completed = false;
+  } else {
+    tasks[i].completed = true;
+  }
+
+  // console.log(tasks);
+
+  render();
 }
 
 function addTask() {
-  console.log("add task");
+  // console.log("add task");
   const task = {
     name: $(".js-newTask").val(),
     completed: false
@@ -26,16 +38,23 @@ function addTask() {
   $(".js-newTask").val("");
 
   render();
+  // console.log(tasks);
 }
 
 function render() {
-  console.log("render");
+  // console.log("render");
   $(".js-container").empty();
 
   for (let i = 0; i < tasks.length; i++) {
     const item = tasks[i];
+    let completeBtn = `<button class="js-btn-complete" data-index='${i}'>Complete</button>`;
+
+    if (item.completed === true) {
+      completeBtn = `<button disabled class="js-btn-complete" data-index='${i}'>Complete</button>`;
+    }
+
     $(".js-container").append(`
-      <li>${item.name}<button class="js-btn-complete" data-index='${i}'>Complete</button></li>
+      <li>${item.name}${completeBtn}</li>
       `);
   }
 }
